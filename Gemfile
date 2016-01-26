@@ -18,6 +18,7 @@ group :production do
 end
 
 gem 'rack-cors', :require => 'rack/cors'
+gem 'active_model_serializers'
 
 group :development do
   gem 'annotate'
