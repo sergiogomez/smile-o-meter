@@ -36,6 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    annotate (2.7.0)
+      activerecord (>= 3.2, < 6.0)
+      rake (~> 10.4)
     arel (6.0.3)
     builder (3.2.2)
     concurrent-ruby (1.0.0)
@@ -109,6 +112,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   mysql2
   pg
   rack-cors
