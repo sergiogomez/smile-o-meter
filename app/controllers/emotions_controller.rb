@@ -2,22 +2,24 @@ class EmotionsController < ApplicationController
   before_filter :find_user
 
   def index
-    render json: @user.emotions.last_week.order('emotion_on DESC')
+    @emotions = @user.emotions.last_week.order('emotion_on DESC')
+
+    render json: @emotions
   end
 
   def show
-    render json: @user.emotions.find(params[:id])
+    @emotion = @user.emotions.find(params[:id])
+
+    render json: @emotion
   end
 
   def create
-    @emotion = @user.emotions.new(
-      status: params[:status],
-      emotion_on: params[:emotion_on]
-      )
+    @emotion = @user.emotions.new(emotion_params)
+
     if @emotion.save
-      render json: @emotion, status: 201
+      render json: @emotion, status: :created
     else
-      render json: { error: "Emotion could not be created" }, status: 422
+      render json: @emotion.errors, status: :unprocessable_entity
     end
   end
 
@@ -25,6 +27,10 @@ class EmotionsController < ApplicationController
 
   def find_user
     @user = User.find(params[:user_id])
+  end
+
+  def emotion_params
+    params.require(:emotion).permit(:status, :emotion_on)
   end
 
 end
