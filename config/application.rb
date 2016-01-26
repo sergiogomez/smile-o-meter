@@ -32,5 +32,6 @@ module SmileOMeter
           :max_age => 0
       end
     end
+    config.api_only = true
   end
 end
