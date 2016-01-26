@@ -15,6 +15,8 @@ class Emotion < ActiveRecord::Base
 
   enum status: [ :sad, :happy ]
 
+  scope :last_week, lambda { where('emotion_on <= ? AND emotion_on > ?', Date.today, Date.today - 1.week) }
+
   validates :user_id, presence: true
   validates :emotion_on, presence: true, uniqueness: { scope: :user_id }
 end

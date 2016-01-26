@@ -2,7 +2,7 @@ class EmotionsController < ApplicationController
   before_filter :find_user
 
   def index
-    render json: @user.emotions
+    render json: @user.emotions.last_week.order('emotion_on DESC')
   end
 
   def show
