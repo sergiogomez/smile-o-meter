@@ -14,4 +14,7 @@ class Emotion < ActiveRecord::Base
   belongs_to :user, inverse_of: :emotions
 
   enum status: [ :sad, :happy ]
+
+  validates :user_id, presence: true
+  validates :emotion_on, presence: true, uniqueness: { scope: :user_id }
 end
