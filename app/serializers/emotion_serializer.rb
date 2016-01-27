@@ -1,3 +1,7 @@
 class EmotionSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :emotion_on, :status
+  attributes :id, :email, :emotion_on, :status
+
+  def email
+    object.user.email
+  end
 end
