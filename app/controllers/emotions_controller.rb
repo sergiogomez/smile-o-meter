@@ -4,13 +4,13 @@ class EmotionsController < ApplicationController
   def index
     @emotions = @user.emotions.last_week.order('emotion_on DESC')
 
-    render json: @emotions
+    render json: @emotions, meta: { user_email: @user.email }
   end
 
   def show
     @emotion = @user.emotions.find(params[:id])
 
-    render json: @emotion
+    render json: @emotion, meta: { user_email: @user.email }
   end
 
   def create
