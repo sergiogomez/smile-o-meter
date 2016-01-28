@@ -42,6 +42,7 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (~> 10.4)
     arel (6.0.3)
+    bcrypt (3.1.10)
     builder (3.2.2)
     concurrent-ruby (1.0.0)
     erubis (2.7.0)
@@ -109,6 +110,8 @@ GEM
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    warden (1.2.4)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -116,6 +119,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   annotate
+  bcrypt
   mysql2
   pg
   rack-cors
@@ -123,6 +127,7 @@ DEPENDENCIES
   rails-api
   rails_12factor
   spring
+  warden
 
 BUNDLED WITH
    1.11.2

@@ -19,6 +19,8 @@ end
 
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers'
+gem 'warden'
+gem 'bcrypt'
 
 group :development do
   gem 'annotate'

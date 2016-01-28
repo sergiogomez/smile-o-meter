@@ -33,5 +33,9 @@ module SmileOMeter
       end
     end
     config.api_only = true
+    config.middleware.insert_after ActionDispatch::ParamsParser, Warden::Manager do |manager|
+      manager.default_strategies :authentication_token
+      manager.failure_app = UnauthorizedController
+    end
   end
 end
