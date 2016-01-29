@@ -1,6 +1,6 @@
 class EmotionsController < ApplicationController
   before_filter :find_user
-  before_filter :find_emotion, only: [:show, :update]
+  before_filter :find_emotion, only: [:show, :update, :destroy]
 
   def index
     @emotions = @user.emotions.last_week.order('emotion_on DESC')
@@ -28,6 +28,11 @@ class EmotionsController < ApplicationController
     else
       render json: @emotion.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @emotion.destroy
+    render json: { status: :ok }, status: :ok
   end
 
   private
